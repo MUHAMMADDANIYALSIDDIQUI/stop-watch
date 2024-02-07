@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>2
+    <title>Login and Signup Form</title>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-c13QIj0h6sGzjTewFuruiZl0YG10iiwti8hsN2N6u9bB+0Iqgb9oA92XzvDZ+lgI" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-7S2pzU/cMH3y7PIsE6u8oEPmGTJ+uikFz9RUBMGBb4mYpXBlFhqW5LBozzcVBeFjs" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-hH+KfE2wXJw5Cp4KcjD3R7g6g3qa6B0EEerR7FTjsC7f3xGE8PCVz7A5weExf6oWd" crossorigin="anonymous"></script>-->
+    <style>
+        .img-1{
+            background-image:linear-gradient(rgba(10, 10, 10, 0.601), rgba(34, 27, 27, 0.494)) ,url(image.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-size: 20px;
+        }
+        .img-2{
+            background-image: linear-gradient(rgb(1, 0, 0),rgba(57, 184, 165, 0.713),rgb(255, 255, 255),rgba(31, 175, 197, 0.77),rgb(0, 225, 255),rgb(4, 0, 0));
+            color: black;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 img-1">
+                <h1>Login</h1>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+            <div class="col-md-6 p-4 img-2">
+                <h1>Signup</h1>
+                <form id="signupForm">
+                    <div class="mb-3">
+                        <label for="signupName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="signupName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+        // Array to store user information:
+        let users = [];
+
+        // Function to handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', 
+        function register(event) {
+            event.preventDefault();
+            let name = document.getElementById('signupName').value;
+            let email = document.getElementById('signupEmail').value;
+            let password = document.getElementById('signupPassword').value;
+
+            let user = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+            users.push(user);
+            // Clear the form after submission
+            document.getElementById('signupForm').reset();
+        });
+
+        // Function to handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let email = document.getElementById('loginEmail').value;
+            let password = document.getElementById('loginPassword').value;
+
+            let user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                alert('Login successful!');
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+
+            // Clear the form after submission
+            document.getElementById('loginForm').reset();
+        });
+    </script>
+
+</body>
+</html>
+>
